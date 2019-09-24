@@ -1,0 +1,886 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <title>Ride Along</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+    #back {
+        position: absolute;
+        background-color: black;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    #messageBox1 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        line-height: 80px;
+        color: white;
+        font-size: 30px;
+
+        display: block;
+        user-select: none;
+
+        animation: fadeIn 3s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+
+        ;
+
+        to {
+            opacity: 1
+        }
+
+        ;
+    }
+
+    #messageBox2 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        line-height: 80px;
+        color: white;
+        font-size: 1.5em;
+
+        display: none;
+        user-select: none;
+
+    }
+
+    #messageBox3 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        line-height: 80px;
+        color: white;
+        font-size: 40px;
+
+        display: none;
+        user-select: none;
+    }
+
+    #messageBox4 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        
+        color: white;
+        font-size: 1.2em;
+
+        display: none;
+        user-select: none;
+    }
+
+    .button {
+        background-color: grey;
+    }
+
+    .button:hover {
+        opacity: 0.5;
+    }
+
+    #question1 {
+        position: absolute;
+
+        width: 60%;
+        height: 15%;
+        left: 20%;
+        top: 60%;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        line-height: 110px;
+        color: white;
+        font-size: 1.0em;
+        user-select: none;
+    }
+
+    #question2 {
+        position: absolute;
+
+        width: 30%;
+        height: 10%;
+        left: 60%;
+        top: 85%;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        line-height: 70px;
+        color: white;
+        font-size: 25px;
+        user-select: none;
+    }
+
+    #question3 {
+        position: absolute;
+
+        width: 30%;
+        height: 10%;
+        left: 60%;
+        top: 85%;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        line-height: 70px;
+        color: white;
+        font-size: 25px;
+        user-select: none;
+    }
+
+    #homeButton1 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+    
+    #homeButton2 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+    
+    #homeButton3 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+    
+    #homeButton4 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+    
+    #homeButton5 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+    
+    #homeButton6 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+    
+    #homeButton7 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+    
+    #homeButton8 {
+        position: absolute;
+        right: 2%;
+        color: white;
+        text-shadow: 0 1px 0 #fff;
+        top: 0px;
+    }
+
+    #why1,
+    #why2 {
+        position: absolute;
+        top: 40%;
+        left: 20%;
+        right: 20%;
+        text-align: center;
+        font-size: 25px;
+        line-height: 30px;
+
+    }
+
+
+    input[type=text] {
+        width: 80%;
+        height: 20%;
+        padding: 20px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid white;
+        border-radius: 4px;
+        margin-bottom: 50px;
+        font-size: 1em;
+        background-color: grey;
+        color: white;
+        
+    }
+    
+    #messageBox5 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        
+        color: white;
+        font-size: 1.2em;
+
+        display: none;
+        user-select: none;
+    }
+    
+    #messageBox6 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        
+        color: white;
+        font-size: 1.2em;
+
+        display: none;
+        user-select: none;
+    }
+    
+    #messageBox7 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        
+        color: white;
+        font-size: 1.2em;
+
+        display: none;
+        user-select: none;
+    }
+    
+    #messageBox8 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        
+        color: white;
+        font-size: 1.2em;
+
+        display: none;
+        user-select: none;
+    }
+    
+    #messageBox9 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        
+        color: white;
+        font-size: 1.2em;
+
+        display: none;
+        user-select: none;
+    }
+    
+    #messageBox10 {
+        position: absolute;
+        background-color: hsla(0, 0%, 20%, .8);
+        width: 90vw;
+        height: 90vh;
+        left: 5vw;
+        top: 5vh;
+        border: 2px solid white;
+        border-radius: 20px;
+
+        text-align: center;
+        
+        color: white;
+        font-size: 1.2em;
+
+        display: none;
+        user-select: none;
+    }
+    
+    .itemPlace {
+        height: 20%;
+        width: 20%;
+        background-color: grey;
+        border: 2px solid white;
+        border-radius: 10px;
+        font-size: 1em;
+        
+        animation: floating 5s infinite;
+    }
+    
+    @keyframes floating {
+        0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	   }
+        50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	   }
+	   100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	   }
+    }
+    
+    .itemPlace:hover {
+        opacity: 0.5;
+    }
+    
+    #item1 {
+        position: absolute;
+        top: 30%;
+        left: 10%; 
+    }
+    
+    #item2 {
+        position: absolute;
+        top: 30%;
+        left: 40%;
+    }
+    
+    #item3 {
+        position: absolute;
+        top: 30%;
+        left: 70%;
+    }
+    
+    #item4 {
+        position: absolute;
+        top: 70%;
+        left: 10%;
+    }
+    
+    #item5 {
+        position: absolute;
+        top: 70%;
+        left: 40%;
+    }
+    
+    #item6 {
+        position: absolute;
+        top: 70%;
+        left: 70%;
+    }
+    
+    .itemSize {
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+    }
+    
+    #textPlace {
+        position: absolute;
+        top:  -28%;
+        left: 30%;
+        font-size: 0.5em;
+        text-align: center;
+    }
+    
+    
+    .map-responsive{
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+    }
+    
+    .map-responsive iframe{
+        left:5%;
+        top:15%;
+        height:70%;
+        width:40%;
+        position:absolute;
+    }
+    
+    a:link {
+        color: white; 
+        background-color: transparent; 
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: red;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+    
+    #about {
+        background-color: grey;
+        right:5%;
+        top:25%;
+        height:55%;
+        width:40%;
+        position:absolute;
+        font-size: 0.5em;
+        border: 2px solid white;
+        border-radius: 10px;
+        
+    }
+    
+
+
+</style>
+
+<body>
+
+
+    <div id="image">
+        <img id="back" src="gps.jpg">
+        <div id="back" style="background-color: grey; opacity: 0.8;"></div>
+    </div>
+
+    <div id="messageBox1">
+        <p style="font-size: 2em; margin-top: 5vh;font-family: 'Racing Sans One', cursive;"> <a href="http://studenthome.nku.edu/~evansc11/MIN240/Lab9/LAB9_V2.html"> Ride Along </a> </p>
+        <p style="font-size: 1.0em;"> The best navigation app on the planet</p>
+        <div class="button" id="question1"> Get Started </div>
+        <p style="font-size: .25em;"> *currently only supported in the Cincinnati area</p>
+    </div>
+
+    <div id="messageBox2">
+        <div id="backButton1">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One', cursive; font-size: 2em;">Where do you want to navigate to?</p>
+        <form>
+            <label for="fname">Where are you coming from?: </label>
+            <input type="text" id="fname" name="fname">
+        </form>
+        <form>
+            <label for="fname">What is your destination?: </label>
+            <input type="text" id="fname" name="fname">
+        </form>
+
+        <div class="button" id="question2"> Navigate! </div>
+
+
+
+    </div>
+
+    <div id="messageBox3">
+        <div id="backButton2">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One', cursive; font-size: 1em;"> What would you like to see around the area?</p>
+
+        <div class="itemPlace" id="item1">
+            <p id="textPlace">Museum</p>
+            <img class="itemSize" src="icons8-museum-48.png">
+        </div>
+
+        <div class="itemPlace" id="item2">
+            <p id="textPlace">Shopping</p>
+            <img class="itemSize" src="icons8-barcode-scanner-48.png">
+        </div>
+        <div class="itemPlace" id="item3">
+            <p id="textPlace">Sports Game</p>
+            <img class="itemSize" src="icons8-baseball-48.png">
+        </div>
+        <div class="itemPlace" id="item4">
+            <p id="textPlace">Festival</p>
+            <img class="itemSize" src="icons8-merry-go-round-48.png">
+        </div>
+        <div class="itemPlace" id="item5">
+            <p id="textPlace">Resturants</p>
+            <img class="itemSize" src="icons8-food-and-wine-48.png">
+        </div>
+        <div class="itemPlace" id="item6">
+            <p id="textPlace">Movies</p>
+            <img class="itemSize" src="icons8-spider-man-head-48.png">
+        </div>
+    </div>
+
+
+
+    <div id="messageBox4">
+        <div id="backButton3">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One'; font-size: 1.8em;"> Cincinnati Museum </p>
+
+        <div class="map-responsive">
+            <iframe src="https://maps.google.com/maps?q=cincinnati%20museum&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+        <div id="about" style="font-size: 1em;">
+            <p>Children explore arts, books, culture & science through interactive exhibits & educational programs.</p>
+            <p><a href="https://www.cincymuseum.org/">Website</a></p>
+            <img src="https://a.travel-assets.com/findyours-php/viewfinder/images/res60/197000/197453-Cincinnati-Museum-Center-At-Union-Terminal.jpg" style="height: 50%; width: 100%;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+
+        </div>
+    </div>
+
+    <div id="messageBox5">
+        <div id="backButton4">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One'; font-size: 1.8em;"> Kenwood Mall </p>
+
+        <div class="map-responsive">
+            <iframe src="https://maps.google.com/maps?q=kenwood%20mall&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        
+        <div id="about" style="font-size: 1em;">
+            <p>Kenwood Towne Centre is a shopping mall northeast of Cincinnati, at the corner of Montgomery and Kenwood Roads, adjacent to Interstate 71. Anchor stores are Dillard's, Macy's, and Nordstrom.</p>
+            <p><a href="https://www.kenwoodtownecentre.com/en.html">Website</a></p>
+            <img src="http://a.mktgcdn.com/p/PUtYXR_EkcdVJElXVs-YxiiqcqbJwp-MjYQpo2ONUJ0/2880x1147.jpg" style="height: 50%; width: 100%;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+
+        </div>
+    </div>
+
+    <div id="messageBox6">
+        <div id="backButton5">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One'; font-size: 1.8em;"> Great American Ball Park </p>
+
+        <div class="map-responsive">
+            <iframe src="https://maps.google.com/maps?q=great%20amaerican%20ball%20park&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        
+        <div id="about" style="font-size: 0.9em;">
+            <p>Great American Ball Park is a baseball stadium in Cincinnati, Ohio, which is the home field of Major League Baseball's Cincinnati Reds. It opened in 2003, replacing Cinergy Field, their home field from 1970 to 2002. The park's name comes from Great American Insurance Group.</p>
+            <p><a href="https://www.mlb.com/reds/ballpark">Website</a></p>
+            <img src="http://groteenterprises.com/wp-content/uploads/2015/10/GABP-aerial.jpg" style="height: 50%; width: 100%;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+
+        </div>
+    </div>
+
+    <div id="messageBox7">
+        <div id="backButton6">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One'; font-size: 1.8em;"> Kings Island </p>
+
+        <div class="map-responsive">
+            <iframe src="https://maps.google.com/maps?q=kings%20island%20ohio&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        
+        <div id="about" style="font-size: 1em;">
+            <p>Kings Island is a 364-acre amusement park located 24 miles northeast of Cincinnati in Mason, Ohio. Owned and operated by Cedar Fair, the park first opened in 1972 by the Taft Broadcasting Company.</p>
+            <p><a href="https://www.visitkingsisland.com/">Website</a></p>
+            <img src="https://media.graytvinc.com/images/KINGS+ISLAND+BANSHEE.jpg" style="height: 50%; width: 100%;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+
+        </div>
+    </div>
+
+    <div id="messageBox8">
+        <div id="backButton7">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One'; font-size: 1.8em;"> Condado Taco </p>
+
+        <div class="map-responsive">
+            <iframe src="https://maps.google.com/maps?q=condado%20tacos%20cincinnati&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        
+        <div id="about" style="font-size: 0.9em;">
+            <p>Condado’s build-your-own-taco concept has been operating since 2014, with our first location at 1227 North High Street, Columbus, Ohio. We’ve since added several more locations in Columbus and Pittsburgh, with many more on the way!</p>
+            <p><a href="http://www.condadotacos.com/">Website</a></p>
+            <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/condadoexterior-1539783111.jpg" style="height: 50%; width: 100%;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+
+        </div>
+    </div>
+
+    <div id="messageBox9">
+        <div id="backButton8">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </div>
+        <p style="font-family: 'Racing Sans One'; font-size: 1.8em;"> Xscape Theatres Northgate 14 </p>
+
+        <div class="map-responsive">
+            <iframe src="https://maps.google.com/maps?q=great%20xscape%20cincinnati&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        
+        <div id="about" style="font-size: 0.8em;">
+            <p>The corporate philosophy of Xscape Theatres has been simple and effective – build a quality, cost efficient movie theatre in underserved markets and the audience will come. As one of the fastest growing and most successful movie chains in the country, Xscape Theatres markets with populations from 100,000 to 400,000.</p>
+            <p><a href="http://xscapetheatres.com/location/40579/OH-_-Northgate-14">Website</a></p>
+            <img src="http://filmsxpress.com/userimages/428/images/X1488%20Front%20(2).png" style="height: 50%; width: 100%;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        var myVideo = document.querySelector("#myVideo");
+
+        var myQuestion1 = document.querySelector("#question1");
+        var myQuestion2 = document.querySelector("#question2");
+        var myQuestion3 = document.querySelector("#question3");
+
+        var myMessage1 = document.querySelector("#messageBox1");
+        var myMessage2 = document.querySelector("#messageBox2");
+        var myMessage3 = document.querySelector("#messageBox3");
+        var myMessage4 = document.querySelector("#messageBox4");
+        var myMessage5 = document.querySelector("#messageBox5");
+        var myMessage6 = document.querySelector("#messageBox6");
+        var myMessage7 = document.querySelector("#messageBox7");
+        var myMessage8 = document.querySelector("#messageBox8");
+        var myMessage9 = document.querySelector("#messageBox9");
+
+
+        var myBack1 = document.querySelector("#backButton1");
+        var myBack2 = document.querySelector("#backButton2");
+        var myBack3 = document.querySelector("#backButton3");
+        var myBack4 = document.querySelector("#backButton4");
+        var myBack5 = document.querySelector("#backButton5");
+        var myBack6 = document.querySelector("#backButton6");
+        var myBack7 = document.querySelector("#backButton7");
+        var myBack8 = document.querySelector("#backButton8");
+
+        var myItem1 = document.querySelector("#item1");
+        var myItem2 = document.querySelector("#item2");
+        var myItem3 = document.querySelector("#item3");
+        var myItem4 = document.querySelector("#item4");
+        var myItem5 = document.querySelector("#item5");
+        var myItem6 = document.querySelector("#item6");
+
+
+
+
+
+        myQuestion1.addEventListener("click", showMessage2, false);
+        myQuestion2.addEventListener("click", showMessage3, false);
+
+        function showMessage2() {
+            myMessage1.style.display = "none";
+            myMessage2.style.display = "block";
+
+        }
+
+        function showMessage3() {
+            myMessage2.style.display = "none";
+            myMessage3.style.display = "block";
+
+        }
+
+        myBack1.addEventListener("click", hideMessage2, false);
+        myBack2.addEventListener("click", hideMessage3, false);
+        myBack3.addEventListener("click", hideMessage4, false);
+        myBack4.addEventListener("click", hideMessage5, false);
+        myBack5.addEventListener("click", hideMessage6, false);
+        myBack6.addEventListener("click", hideMessage7, false);
+        myBack7.addEventListener("click", hideMessage8, false);
+        myBack8.addEventListener("click", hideMessage9, false);
+
+        function hideMessage2() {
+            myMessage1.style.display = "block";
+            myMessage2.style.display = "none";
+        }
+
+        function hideMessage3() {
+            myMessage2.style.display = "block";
+            myMessage3.style.display = "none";
+        }
+
+        function hideMessage4() {
+            myMessage3.style.display = "block";
+            myMessage4.style.display = "none";
+        }
+
+        function hideMessage5() {
+            myMessage3.style.display = "block";
+            myMessage5.style.display = "none";
+        }
+
+        function hideMessage6() {
+            myMessage3.style.display = "block";
+            myMessage6.style.display = "none";
+        }
+
+        function hideMessage7() {
+            myMessage3.style.display = "block";
+            myMessage7.style.display = "none";
+        }
+
+        function hideMessage8() {
+            myMessage3.style.display = "block";
+            myMessage8.style.display = "none";
+        }
+
+        function hideMessage9() {
+            myMessage3.style.display = "block";
+            myMessage9.style.display = "none";
+        }
+
+
+        myItem1.addEventListener("click", showMessage4, false);
+        myItem2.addEventListener("click", showMessage5, false);
+        myItem3.addEventListener("click", showMessage6, false);
+        myItem4.addEventListener("click", showMessage7, false);
+        myItem5.addEventListener("click", showMessage8, false);
+        myItem6.addEventListener("click", showMessage9, false);
+
+        function showMessage4() {
+            myMessage3.style.display = "none";
+            myMessage4.style.display = "block";
+
+        }
+
+        function showMessage5() {
+            myMessage3.style.display = "none";
+            myMessage5.style.display = "block";
+
+        }
+
+        function showMessage6() {
+            myMessage3.style.display = "none";
+            myMessage6.style.display = "block";
+
+        }
+
+        function showMessage7() {
+            myMessage3.style.display = "none";
+            myMessage7.style.display = "block";
+
+        }
+
+        function showMessage8() {
+            myMessage3.style.display = "none";
+            myMessage8.style.display = "block";
+
+        }
+
+        function showMessage9() {
+            myMessage3.style.display = "none";
+            myMessage9.style.display = "block";
+
+        }
+
+    </script>
+</body>
+
+
+</html>
